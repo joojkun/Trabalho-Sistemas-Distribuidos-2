@@ -1,0 +1,1 @@
+"""Funcoes usadas pelos microsservicos."""

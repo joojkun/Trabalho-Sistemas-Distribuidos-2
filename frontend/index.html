@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Loja demonstrativa de microsservicos com atualizacao de pedidos em tempo real.">
+    <title>Loja distribuída</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/config.js"></script>
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div>
+        <p class="eyebrow">E-commerce orientado a eventos</p>
+        <h1>Loja distribuída</h1>
+        <p>Catálogo, pedidos e promoções conectados por microsserviços.</p>
+      </div>
+      <p id="connection-status" class="connection-status" role="status">Conectando...</p>
+    </header>
+
+    <main>
+      <section class="panel" aria-labelledby="catalog-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">REST · Estoque</p>
+            <h2 id="catalog-title">Produtos disponíveis</h2>
+          </div>
+          <button id="refresh-products" class="button button-secondary" type="button">Atualizar catálogo</button>
+        </div>
+        <p id="catalog-message" class="feedback" role="status"></p>
+        <form id="order-form">
+          <div id="products-list" class="product-grid"></div>
+          <div class="form-footer">
+            <p>Escolha as quantidades e finalize para acompanhar o pedido em tempo real.</p>
+            <button id="create-order" class="button button-primary" type="submit">Criar pedido</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="orders-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">SSE · Acompanhamento</p>
+            <h2 id="orders-title">Seus pedidos</h2>
+          </div>
+        </div>
+        <p id="orders-message" class="feedback" role="status"></p>
+        <div id="orders-list" class="orders-list">
+          <p class="empty-state">Ainda não há pedidos nesta sessão.</p>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="promotions-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">RabbitMQ · E-mail</p>
+            <h2 id="promotions-title">Receba ofertas por categoria</h2>
+          </div>
+        </div>
+        <p>Cadastre seu e-mail e selecione as categorias de interesse.</p>
+        <form id="interest-form" class="interest-form">
+          <label class="field-label" for="interest-email">E-mail</label>
+          <input id="interest-email" name="email" type="email" autocomplete="email" required placeholder="voce@exemplo.com">
+          <fieldset>
+            <legend>Categorias de interesse</legend>
+            <label class="check-option"><input type="checkbox" name="category" value="A"> Categoria A</label>
+            <label class="check-option"><input type="checkbox" name="category" value="B"> Categoria B</label>
+            <label class="check-option"><input type="checkbox" name="category" value="C"> Categoria C</label>
+          </fieldset>
+          <div class="button-row">
+            <button class="button button-primary" type="submit">Cadastrar interesse</button>
+            <button id="cancel-interest" class="button button-secondary" type="button">Cancelar inscrição</button>
+          </div>
+          <p id="interest-message" class="feedback" role="status"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>Interface em JavaScript · API Gateway em Python · Eventos assinados com RSA</p>
+    </footer>
+  </body>
+</html>
