@@ -6,8 +6,10 @@ from comum.mensagens import consumir_eventos, publicar_evento
 def preparar_envio(envelope):
     pedido = envelope["Data"]
     # A nota e criada apenas depois do pagamento aprovado.
-    nota = "NF-" + pedido["pedido_id"].upper()
+    nota = "NF-" + pedido["pedido_id"].upper() # Gerando a NF do Pedido
+    # Converte o pedido em um dicionario para adicionar a nota e a data de envio.
     dados = dict(pedido)
+    # Adiciona a nota fiscal e a data de envio ao dicionario de dados.
     dados["nota_fiscal"] = nota
     dados["data_envio"] = datetime.now(timezone.utc).isoformat(timespec="seconds")
     publicar_evento("entrega", "pedido.enviado", dados)

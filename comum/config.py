@@ -7,9 +7,11 @@ PASTA_CHAVES = PASTA_PROJETO / "chaves"
 # Pode ser trocada por uma URL de outro servidor RabbitMQ.
 URL_RABBITMQ = os.getenv("RABBITMQ_URL", "amqp://guest:guest@localhost:5672/%2F")
 
+# Tipos de Exchange que podem ser usados para publicar eventos.
 EXCHANGE_ECOMMERCE = "eCommerce"
 EXCHANGE_PROMOCOES = "Promoções"
 
+# Define os nomes das filas de cada serviço.
 SERVICOS = ("principal", "estoque", "pagamento", "entrega", "promocoes")
 
 PASTA_DADOS = PASTA_PROJETO / "data"
